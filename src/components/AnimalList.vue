@@ -1,8 +1,8 @@
 <template>
     <div>
        <h2>Add List</h2>
- 
- <form @submit.prevent>
+
+<form @submit.prevent>
     <label>Species</label><br>
     <input v-model="newAnimal.species" type="text" placeholder="Species"><br><br> 
     <label>Name</label><br>
@@ -50,7 +50,7 @@
   <tr v-for="(sector, key) in sectors" :key="key" >
     <td>{{ sector.name }}</td> 
      <span>
-         <button @click ="showAnimal(animal)">Show Animal</button>
+         <button @click ="showAnimal(sector)">Show Animal</button>
     </span>
   </tr>
 </table>
@@ -104,9 +104,15 @@ export default {
           this.newAnimal = {};
          },
 
-         showAnimal()
+         showAnimal(sector)
          {  
-             alert('caoo');
+            let listOfAnimal = [];
+            this.animals.forEach(function(animal){
+                if(sector == animal.sector){
+                    listOfAnimal.push(`${animal.species}  ${animal.name}`);
+               }
+           })
+           alert(listOfAnimal);
          }
     }
 }
