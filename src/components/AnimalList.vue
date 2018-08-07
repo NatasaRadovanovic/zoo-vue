@@ -8,10 +8,10 @@
     <th>Name</th>
     <th>Date of Birth</th>
   </tr>
-  <tr v-for="(animal, key) in animals" :key="key">
+  <tr v-for="(animal, key) in animals" :key="key" >
     <td>{{ animal.species }}</td> 
-    <td>{{ animal.name }}</td> 
-    <td>{{ animal.dateOfBirth }}</td> 
+    <td >{{ animal.name }}</td> 
+    <td>{{ animal.dateOfBirth ? animal.dateOfBirth : 'Unknown' }}</td> 
   </tr>
 </table>
     </div> 
@@ -26,9 +26,9 @@ export default {
       return { 
       animals: [
             {species: "Snake", name:"Milica",dateOfBirth:"12.06.2011"}, 
-            {species: "Monkey", name:"Dragan",dateOfBirth:"05.01.2010"},
+            {species: "Monkey", name:"Dragan",dateOfBirth:''},
             {species: "Lion", name:"King",dateOfBirth:"12.06.2008"},
-            {species: "Tiger", name:"Jack",dateOfBirth:"11.12.2017"},
+            {species: "Tiger", name:"Jack",dateOfBirth:''},
             {species: "Alligator", name:"Mile",dateOfBirth:"23.07.2000"},
           
       ],
