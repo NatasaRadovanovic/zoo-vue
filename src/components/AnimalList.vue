@@ -1,8 +1,19 @@
 <template>
     <div>
-        <h2>Animal List</h2>
+       <h2>Animal List</h2>
+ 
+ <form @submit.prevent>
+        <label>Species</label><br>
+        <input v-model="newAnimal.species" type="text" placeholder="Species"><br><br> 
+        <label>Name</label><br>
+        <input v-model="newAnimal.name" type="text" placeholder="name"><br><br>
+        <label>Date of Birth</label><br>
+        <input v-model="newAnimal.dateOfBirth" type="date"><br><br>
+        <button @click="addAnimal" type="submit">Add Animal</button><br><br>
+    </form>
+ 
 
-<table id="customers">
+<table id="animals">
   <tr>
     <th>Species</th>
     <th>Name</th>
@@ -38,6 +49,8 @@ export default {
             {species: "Alligator", name:"Mile",dateOfBirth:"23.07.2000"},
           
       ],
+
+      newAnimal:{}
      }
     },
     
@@ -51,10 +64,15 @@ export default {
         moveToTop(animal)
         {
             if(this.animals.indexOf(animal) > 0) {
-            this.animals.splice(this.animals.indexOf(animal), 1);
-            this.animals.unshift(animal);
-}
-        }
+                this.removeAnimal(animal);
+                this.animals.unshift(animal);
+            }
+        },
+
+         addAnimal(){
+          this.animals.push(this.newAnimal); 
+          this.newAnimal = {};
+      }
     }
 
 }
@@ -72,27 +90,28 @@ export default {
   margin-top: 60px;
 }
 
-#customers {
+#animals {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-#customers td, #customers th {
+#animals td, #animals th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#animals tr:nth-child(even){background-color: #f2f2f2;}
 
-#customers tr:hover {background-color: #ddd;}
+#animals tr:hover {background-color: #ddd;}
 
-#customers th {
+#animals th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #4CAF50;
     color: white;
 }
+
 
 </style>
