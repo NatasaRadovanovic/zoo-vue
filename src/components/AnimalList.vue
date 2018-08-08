@@ -38,6 +38,9 @@
     <span>
          <button @click ="removeAnimal(animal)">Remove</button>
     </span>
+    <span>
+         <button @click ="toggleBackground(animal)">Toggle button</button>
+    </span>
     </tr>
 </table>
 
@@ -106,8 +109,9 @@ export default {
           ],  
       selected:'',  
       newAnimal:{background:true},
-      sectors:sectors //mora ovde da ga ubacimo jer ga u data samo moze gore prepoznati
+       //mora sectors ovde da ga ubacimo jer ga u data samo moze gore prepoznati
       // tu se zapravo nalazi const tj niz sectors, template vidi data()
+      sectors:sectors
      }
     },
     
@@ -146,6 +150,15 @@ export default {
          activeColor(animal)
          {  
              return animal.background;
+         },
+
+         toggleBackground(animal)
+         {  
+             if(animal.background == true){
+                 animal.background = false;
+             }else{
+                 animal.background  = true;
+             }
          }
     }
 }
