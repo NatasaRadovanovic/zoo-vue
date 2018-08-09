@@ -133,7 +133,7 @@ export default {
          addAnimal()
          {
           this.animals.push(this.newAnimal); 
-          this.newAnimal = {};
+          this.newAnimal = {background:true};
          },
 
          showAnimal(sector)
@@ -154,11 +154,7 @@ export default {
 
          toggleBackground(animal)
          {  
-             if(animal.background == true){
-                 animal.background = false;
-             }else{
-                 animal.background  = true;
-             }
+             animal.background = !animal.background;
          }
     }
 }
